@@ -1,1 +1,17 @@
+Project: Chinese_Chess game using Qt
+Team member: Blair Xu, Zhangchi Lu
 
+Steps:
+  1. Build up qt interface of chessboard and the control on touch screen and keyboard.
+  2. Build up chess logic and rules guidance.
+  3. Polish chess with animations and sound. Build up timer application.
+      
+Interfaces:
+  1. home page
+  2. chessboard page
+  3. result page
+
+Work divisions:
+  - Together deal with first step
+  - Zhangchi will handle most of second step
+  - Xu will handle most of third step
