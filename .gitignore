@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+*.stash
+build-Chinese_Chess-Desktop_Qt_5_15_2_clang_64bit-Debug/Makefile
+build-Chinese_Chess-Desktop_Qt_5_15_2_clang_64bit-Debug/moc_button.cpp
+build-Chinese_Chess-Desktop_Qt_5_15_2_clang_64bit-Debug/moc_game.cpp
+build-Chinese_Chess-Desktop_Qt_5_15_2_clang_64bit-Debug/moc_predefs.h

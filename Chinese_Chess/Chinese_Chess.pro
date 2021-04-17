@@ -9,14 +9,15 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    main.cpp \
-    chinese_chess.cpp
+    button.cpp \
+    game.cpp \
+    main.cpp
 
 HEADERS += \
-    chinese_chess.h
+    button.h \
+    game.h
 
-FORMS += \
-    chinese_chess.ui
+FORMS +=
 
 TRANSLATIONS += \
     Chinese_Chess_en_US.ts
