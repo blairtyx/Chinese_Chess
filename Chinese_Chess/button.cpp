@@ -26,8 +26,7 @@ Button::Button(QString name, QGraphicsItem *parent):QGraphicsRectItem(parent)
 void Button::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     if (event){
-        qDebug() << this->text->toPlainText();
-        qDebug() << "[in button] MousePressed";
+        qDebug() << this->text->toPlainText() << "[in button] MousePressed";
         emit clicked();
     }
 }
@@ -35,23 +34,20 @@ void Button::mousePressEvent(QGraphicsSceneMouseEvent *event)
 void Button::keyPressEvent(QKeyEvent *event)
 {
     if (event->key() == Qt::Key_Enter){
-        qDebug() << this->text->toPlainText();
-        qDebug() << "hhhhh";
+        qDebug() << this->text->toPlainText()  << "hhhhh";
     }
 }
 
 void Button::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 {
     if (event){
-      qDebug() << this->text->toPlainText();
-      qDebug() << "[in button] hover_enter";
+      qDebug() << this->text->toPlainText() << "[in button] hover_enter";
     }
 }
 
 void Button::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 {
     if (event){
-        qDebug() << this->text->toPlainText();
-        qDebug() << "[in button] hover_esc";
+        qDebug() << this->text->toPlainText() << "[in button] hover_esc";
     }
 }

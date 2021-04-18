@@ -1,8 +1,9 @@
 #include "cc_grid.h"
+#include "game.h"
 #include <QDebug>
 
 
-
+extern Game *game;
 CC_grid::CC_grid(QGraphicsItem *parent):QGraphicsRectItem(parent)
 {
     // create a rect
@@ -21,22 +22,28 @@ void CC_grid::CC_gridPosi(int xpos, int ypos)
 {
     this->rowPosi = xpos;
     this->colPosi = ypos;
-    qDebug() << "xpos is";
-    qDebug() << xpos;
-    qDebug() << "ypos is";
-    qDebug() << ypos;
+    qDebug() << "xpos is" << xpos << "ypos is" << ypos;
 }
 
 void CC_grid::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     if (event){
-        brush.setColor(Qt::red);
-        brush.setStyle(Qt::SolidPattern);
-        setBrush(brush);
-        qDebug() << "[in grid] MousePressed";
-        qDebug() << this->rowPosi;
-        qDebug() << this->colPosi;
+        this->brush.setColor(Qt::red);
+        this->brush.setStyle(Qt::SolidPattern);
+        this->setBrush(this->brush);
+        qDebug() << "[in grid] MousePressed" << this->rowPosi << this->colPosi;
+        game->game_grid[this->rowPosi + 1][this->colPosi +1]->updateColor(Qt::black);
+
     }
 }
+
+void CC_grid::updateColor(QColor c)
+{
+    this->brush.setColor(c);
+    this->brush.setStyle(Qt::SolidPattern);
+    this->setBrush(this->brush);
+}
+
+
 
 

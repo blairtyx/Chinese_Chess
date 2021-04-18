@@ -136,6 +136,7 @@ void Game::start()
     // refresh the scene
     for (int i = 0, N = gList.size(); i < N ; ++i) {
         gameScene->removeItem(gList[i]);
+        // remove from gList()
     }
 
     // show the chessboard

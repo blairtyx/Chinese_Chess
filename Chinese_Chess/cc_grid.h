@@ -16,7 +16,7 @@ public:
     CC_grid(QGraphicsItem *parent = 0);
     void CC_gridPosi(int xpos, int ypos);
     void mousePressEvent(QGraphicsSceneMouseEvent * event);
-
+    void updateColor(QColor c);
 private:
     QBrush brush;
     bool hasPiece;
