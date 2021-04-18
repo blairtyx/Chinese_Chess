@@ -1,12 +1,14 @@
 #include "game.h"
 #include "button.h"
 #include "cc_board.h"
-
+#include "myrect.h"
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QGraphicsTextItem>
+#include <QGraphicsItem>
 #include <QKeyEvent>
 #include <QPixmap>
+#include <QBrush>
 #include <QDebug>
 
 
@@ -96,14 +98,14 @@ void Game::keyPressEvent(QKeyEvent *event)
 void Game::areYouSure()
 {
     // pop a window
-    QGraphicsRectItem *areYouSure = new QGraphicsRectItem();
-    areYouSure->setRect(0,0, 150, 100);
+    MyRect *areYouSure = new MyRect(150, 100);
+    // uper layer than the main window
     areYouSure->setZValue(2);
-    QBrush brush;
-    brush.setStyle(Qt::SolidPattern);
-    brush.setColor(Qt::white);
+    areYouSure->brush.setStyle(Qt::SolidPattern);
+    areYouSure->brush.setColor(Qt::white);
     areYouSure->setPos(width()/2 - areYouSure->boundingRect().width()/2,
                        height()/2 - areYouSure->boundingRect().height()/2);
+
     gameScene->addItem(areYouSure);
     gList.append(areYouSure);
     // yes button on the left

@@ -14,14 +14,16 @@ SOURCES += \
     cc_grid.cpp \
     cc_piece.cpp \
     game.cpp \
-    main.cpp
+    main.cpp \
+    myrect.cpp
 
 HEADERS += \
     button.h \
     cc_board.h \
     cc_grid.h \
     cc_piece.h \
-    game.h
+    game.h \
+    myrect.h
 
 FORMS +=
 
