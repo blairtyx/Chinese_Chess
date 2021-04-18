@@ -6,6 +6,8 @@
 #include <QWidget>
 #include <QGraphicsScene>
 #include <QGraphicsView>
+#include "cc_grid.h"
+#include "cc_board.h"
 
 class Game: public QGraphicsView
 {
@@ -16,17 +18,21 @@ public:
     // main methods
     void showWelcomeMenu();
     void drawCCBoard();
+    void keyPressEvent(QKeyEvent *event);
 
-
+    QGraphicsScene * gameScene;
+    QList<QGraphicsItem *> gList;
+    CC_board *chess_main_board;
+    CC_grid * game_grid[10][9];
 public slots:
-
+    void areYouSure();
     void start();
     void guide();
+    void notSure();
 
 private:
     // member attributes
-    QGraphicsScene * gameScene;
-    QList<QGraphicsItem *> gList;
+
 
 };
 

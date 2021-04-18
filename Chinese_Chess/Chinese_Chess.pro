@@ -10,11 +10,17 @@ CONFIG += c++11
 
 SOURCES += \
     button.cpp \
+    cc_board.cpp \
+    cc_grid.cpp \
+    cc_piece.cpp \
     game.cpp \
     main.cpp
 
 HEADERS += \
     button.h \
+    cc_board.h \
+    cc_grid.h \
+    cc_piece.h \
     game.h
 
 FORMS +=

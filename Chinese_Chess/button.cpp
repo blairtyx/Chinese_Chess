@@ -1,6 +1,5 @@
 #include "button.h"
 #include <QGraphicsTextItem>
-#include <QBrush>
 #include <QtEvents>
 #include <QDebug>
 
@@ -9,7 +8,6 @@ Button::Button(QString name, QGraphicsItem *parent):QGraphicsRectItem(parent)
     // show the rect button
 
     setRect(0,0, 65,30);
-    QBrush brush;
     brush.setStyle(Qt::SolidPattern);
     brush.setColor(Qt::red);
     setBrush(brush);

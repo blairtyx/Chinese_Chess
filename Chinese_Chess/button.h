@@ -4,6 +4,7 @@
 #include <QGraphicsRectItem>
 #include <QGraphicsSceneMouseEvent>
 #include <QObject>
+#include <QBrush>
 
 class Button : public QObject, public QGraphicsRectItem
 {
@@ -23,6 +24,7 @@ signals:
 
 private:
     QGraphicsTextItem *text;
+    QBrush brush;
 };
 
 #endif // BUTTON_H
