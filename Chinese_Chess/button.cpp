@@ -16,6 +16,7 @@ Button::Button(QString name, QGraphicsItem *parent):QGraphicsRectItem(parent)
 
     // show the text of this button
     text = new QGraphicsTextItem(name, this);
+    text->setDefaultTextColor(Qt::black);
     text->setPos(rect().width() /2 - text->boundingRect().size().width()/2,
                  rect().height()/2 - text->boundingRect().size().height()/2);
 

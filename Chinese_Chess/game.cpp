@@ -25,7 +25,7 @@ Game::Game(QWidget *parent): QGraphicsView(parent)
     // background part
     QBrush bg_brush;
     bg_brush.setStyle(Qt::SolidPattern);
-    bg_brush.setColor(Qt::black);
+    bg_brush.setColor(Qt::white);
     setBackgroundBrush(bg_brush);
 }
 
@@ -35,7 +35,8 @@ void Game::showWelcomeMenu()
     QGraphicsTextItem *nameText = new QGraphicsTextItem("Chinese Chess");
     QFont nameFont("arial", 30);
     nameText->setFont(nameFont);
-    nameText->setPos(width()/2 - nameText->boundingRect().width()/2, 30);
+    nameText->setDefaultTextColor(Qt::black);
+    nameText->setPos(width()/2 - nameText->boundingRect().width()/2, 50);
     gameScene->addItem(nameText);
     gList.append(nameText);
 
@@ -43,6 +44,7 @@ void Game::showWelcomeMenu()
     QGraphicsTextItem *auText = new QGraphicsTextItem("L & X");
     QFont auFont("arial", 10);
     auText->setFont(auFont);
+    auText->setDefaultTextColor(Qt::black);
     auText->setPos(width()/2 - auText->boundingRect().width()/2, nameText->y() + nameText->boundingRect().height() + 10);
     gameScene->addItem(auText);
     gList.append(auText);
