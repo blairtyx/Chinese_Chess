@@ -11,7 +11,6 @@
 #include <QBrush>
 #include <QDebug>
 
-
 Game::Game(QWidget *parent): QGraphicsView(parent)
 {
     // create a scene
