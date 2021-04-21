@@ -15,7 +15,8 @@ SOURCES += \
     cc_piece.cpp \
     game.cpp \
     main.cpp \
-    myrect.cpp
+    myrect.cpp \
+    soldier.cpp
 
 HEADERS += \
     button.h \
@@ -23,7 +24,8 @@ HEADERS += \
     cc_grid.h \
     cc_piece.h \
     game.h \
-    myrect.h
+    myrect.h \
+    soldier.h
 
 FORMS +=
 
@@ -34,3 +36,6 @@ TRANSLATIONS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    res.qrc

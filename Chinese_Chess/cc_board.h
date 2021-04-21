@@ -1,7 +1,9 @@
 #ifndef CC_BOARD_H
 #define CC_BOARD_H
 
+
 #include <QGraphicsPixmapItem>
+#include "cc_piece.h"
 
 class CC_board : public QGraphicsPixmapItem
 {
@@ -10,6 +12,7 @@ public:
     void initialBlue();
     void initialRed();
     void initialBoard();
+
 
 };
 

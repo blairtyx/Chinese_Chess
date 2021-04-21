@@ -80,10 +80,40 @@ void Game::showWelcomeMenu()
     gList.append(quit_bt);
 }
 
-void Game::drawCCBoard()
+void Game::initCCBoard()
 {
     chess_main_board = new CC_board();
+    // set current side as 1, red first;
+    this->currentSide = 1;
 
+}
+
+void Game::cleanWindow()
+{
+    // remove from scene
+    for (int i = 0, N = gList.size(); i < N ; ++i) {
+        gameScene->removeItem(gList[i]);
+    }
+    // remove from gList
+    this->gList.clear();
+
+}
+
+void Game::redrawCCBoard()
+{
+    // redraw the board after we select the piece
+
+    // add the grid back to scene
+    for (int i = 0; i<10 ; ++i){
+        for(int j= 0; j<10; ++j) {
+
+            this->gameScene->addItem(this->game_grid[i][j]); // add to scene to show the item
+            this->gList.append(this->game_grid[i][j]); // add to gList to keep item trackable
+
+        }
+    }
+
+    // add additional buttons (like pause and timer)
 }
 
 // can close the application with 'ESC' key
@@ -94,6 +124,27 @@ void Game::keyPressEvent(QKeyEvent *event)
     }
 }
 
+
+
+void Game::start()
+{
+
+    qDebug() << "[back in game] start";
+    // refresh the scene, remove every thing from the scene for now
+    cleanWindow();
+    // initialize the chessboard, make new board and store them in game->chess_main_board;
+    initCCBoard();
+
+}
+
+void Game::guide()
+{
+    // would show a dedicated page for user guide
+
+    qDebug() << "[back in game] guide";
+}
+
+// pop after the quit button is pressed.
 void Game::areYouSure()
 {
     // pop a window
@@ -123,40 +174,16 @@ void Game::areYouSure()
     connect(no_bt, SIGNAL(clicked()), this, SLOT(notSure()));
     gameScene->addItem(no_bt);
     gList.append(no_bt);
-
-
-
 }
 
-void Game::start()
-{
-
-    qDebug() << "[back in game] start";
-
-    // refresh the scene
-    for (int i = 0, N = gList.size(); i < N ; ++i) {
-        gameScene->removeItem(gList[i]);
-        // remove from gList()
-    }
-
-    // show the chessboard
-    drawCCBoard();
-
-
-}
-
-void Game::guide()
-{
-    qDebug() << "[back in game] guide";
-}
-
+// remove the areYouSure window
 void Game::notSure()
 {
+    // assume 3 items are added to gList after click on the quit button
     for (int i = 0; i < 3; i++){
         int index = gList.size();
         gameScene->removeItem(gList[index-1]);
         gList.pop_back();
     }
-
-
 }
+

@@ -16,13 +16,19 @@ public:
     CC_grid(QGraphicsItem *parent = 0);
     void CC_gridPosi(int xpos, int ypos);
     void mousePressEvent(QGraphicsSceneMouseEvent * event);
-    void updateColor(QColor c);
+    void highlightColor();
+    void dehighlightColor();
+
+    void updateMyPiece(CC_piece * piece);
+    void removeMyPiece();
+
 private:
     QBrush brush;
     bool hasPiece;
-    int rowPosi;
-    int colPosi;
-    // CC_piece * myPiece;
+    int xPos;
+    int yPos;
+    CC_piece * myPiece;
+    bool canMoveTo;
 
 };
 

@@ -42,3 +42,5 @@ blair_to_grid.sh
 build-Chinese_Chess-Desktop_Qt_5_15_2_clang_64bit-Debug/moc_cc_piece.cpp
 build-Chinese_Chess-Desktop_Qt_5_15_2_clang_64bit-Debug/moc_cc_grid.cpp
 build-Chinese_Chess-Desktop_Qt_5_15_2_clang_64bit-Debug/moc_myrect.cpp
+build-Chinese_Chess-Desktop_Qt_5_15_2_clang_64bit-Debug/qrc_res.cpp
+Chinese_Chess/Chinese_Chess.pro.user.d5d4cc0
