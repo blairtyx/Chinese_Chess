@@ -64,7 +64,7 @@ void window::mousePressEvent(QMouseEvent *event) {
                     desty = ystart +y*unit;
                     chessboard[chosenx][choseny] = 0;
                     board_image = 0;
-                    timer->start(50);
+                    timer->start(20);
                     selected = true;
                 }
             } else if(chessboard[x][y] > 0 ){
@@ -168,7 +168,7 @@ void window::mychess_move() {
         int a = qSqrt((desty-curr_y)*(desty-curr_y)+(destx-curr_x)*(destx-curr_x));
         curr_x += 20*(destx-curr_x)/a;
         curr_y += 20*(desty-curr_y)/a;
-        timer->start(50);
+        timer->start(20);
     }
     update();
     return;
