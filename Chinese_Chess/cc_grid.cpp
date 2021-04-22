@@ -35,7 +35,6 @@ void CC_grid::mousePressEvent(QGraphicsSceneMouseEvent *event)
         if (game->selectedPiece == NULL) {
             qDebug() << "[cc_grid]" << "No selected Piece, Selected one";
             qDebug() << "[cc_grid]" << "has piece " << this->hasPiece;
-            qDebug() << "[cc_grid]" << "myPiece's side" << this->myPiece->getMyside();
             qDebug() << "[cc_grid]" << "currentSide" << game->currentSide;
 
 
@@ -84,7 +83,7 @@ void CC_grid::mousePressEvent(QGraphicsSceneMouseEvent *event)
                 }
                 // check if this piece belongs to the same side
                 else if (this->hasPiece && this->myPiece->getMyside() == game->currentSide) {
-                    return;// do nothing
+                    qDebug() << "[cc_grid]" << "same side";
                 }
                 // if empty
                 else if (!this->hasPiece) {
