@@ -29,7 +29,7 @@ public:
 
     QGraphicsScene * gameScene; // the main window to show items
     QList<QGraphicsItem *> gList; // contains all item that is currently shown in the scene(except for piece)
-    CC_board *chess_main_board; // chess board, containing the grid and pieces.
+    CC_board *chess_main_board; // chess board, constructing the gird.
     CC_grid * game_grid[10][9]; //
     CC_piece * selectedPiece = NULL;
     QList <CC_grid *> highlightedGrid; // all highlighted grid
@@ -41,6 +41,9 @@ public slots:
     void start();
     void guide();
     void notSure();
+    void restart();
+    void close();
+
 
 private:
     // member attributes

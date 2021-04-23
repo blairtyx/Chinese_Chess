@@ -10,6 +10,7 @@
 #include <QPixmap>
 #include <QBrush>
 #include <QDebug>
+#include <QApplication>
 
 Game::Game(QWidget *parent): QGraphicsView(parent)
 {
@@ -120,7 +121,7 @@ void Game::redrawCCBoard()
 void Game::keyPressEvent(QKeyEvent *event)
 {
     if (event->key() == Qt::Key_Escape){
-        close();
+        QApplication::quit();
     }
 }
 
@@ -185,5 +186,19 @@ void Game::notSure()
         gameScene->removeItem(gList[index-1]);
         gList.pop_back();
     }
+}
+
+void Game::restart()
+{
+    qDebug() << "[game] restart";
+    // refresh the scene, remove every thing from the scene for now
+    cleanWindow();
+    // initialize the chessboard, make new board and store them in game->chess_main_board;
+    initCCBoard();
+}
+
+void Game::close()
+{
+    QApplication::quit();
 }
 
