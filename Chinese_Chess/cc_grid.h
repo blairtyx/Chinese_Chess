@@ -14,6 +14,7 @@ class CC_grid : public QObject, public QGraphicsRectItem
     Q_OBJECT
 public:
     CC_grid(QGraphicsItem *parent = 0);
+    ~CC_grid();
     void CC_gridPosi(int xpos, int ypos);
     void mousePressEvent(QGraphicsSceneMouseEvent * event);
     void highlightColor();
@@ -21,7 +22,8 @@ public:
 
     void updateMyPiece(CC_piece * piece);
     void removeMyPiece();
-
+    void deleteMypiece();
+    int checkFinish();
     bool hasPiece;
 private:
     QBrush brush;

@@ -19,6 +19,9 @@ public:
     // main methods
     void showWelcomeMenu();
 
+    void showGameOverWindow(int side);// 0 is red, 1 is blue
+
+    void cleanGridPiece();
     void initCCBoard(); // initialize a new board, with grids and pieces in it.
 
     void cleanWindow(); // remove everything from the window
@@ -33,8 +36,8 @@ public:
     CC_grid * game_grid[10][9]; //
     CC_piece * selectedPiece = NULL;
     QList <CC_grid *> highlightedGrid; // all highlighted grid
-    int currentSide;
 
+    int currentSide;
 
 public slots:
     void areYouSure();
@@ -43,10 +46,6 @@ public slots:
     void notSure();
     void restart();
     void close();
-
-
-private:
-    // member attributes
 
 
 };

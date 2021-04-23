@@ -7,8 +7,9 @@ CC_piece::CC_piece(int side, QGraphicsItem *parent):QGraphicsPixmapItem(parent)
 {
     qDebug() << "[in CC_piece] generate a CC_piece" << " side is " << side;
     this->pieceSetSide(side);
-
+    this->alive = true;
 }
+
 
 void CC_piece::pieceSetSide(int side)
 {
@@ -59,6 +60,21 @@ void CC_piece::deselected()
     }
     // clear the highlighted list
     game->highlightedGrid.clear();
+}
+
+void CC_piece::died()
+{
+    this->alive = false;
+}
+
+bool CC_piece::checkAlive()
+{
+    if (this->alive){
+        return true;
+    } else {
+        return false;
+    }
+
 }
 
 

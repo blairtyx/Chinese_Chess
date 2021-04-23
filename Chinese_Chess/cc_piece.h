@@ -16,12 +16,16 @@ public:
     virtual void selected(int x, int y);
     void move(int x, int y);
     void deselected();
+    void died();
+    bool checkAlive();
+
 
 protected:
     // which side is this piece belongs to, 1 would be red, 0 would be blue
     int myside;
     int xPos;
     int yPos;
+    bool alive;
 
 
 };

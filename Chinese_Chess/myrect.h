@@ -12,7 +12,7 @@ class MyRect: public QObject, public QGraphicsRectItem
     Q_OBJECT
 public:
     // Constructor
-    MyRect(int xSize, int ySize, QGraphicsItem * parent = NULL);
+    MyRect(int xSize, int ySize, int mode, QGraphicsItem * parent = NULL);
 
     // main method
     void mousePressEvent(QGraphicsSceneMouseEvent *event);

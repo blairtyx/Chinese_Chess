@@ -81,6 +81,68 @@ void Game::showWelcomeMenu()
     gList.append(quit_bt);
 }
 
+void Game::showGameOverWindow(int side)
+{
+    // 0 is red, 1 is blue
+
+    // freeze current scene
+    int offset = width()/2 - 27/2 - 27*4;
+    MyRect *blankMask = new MyRect(243, 272, 1);// transparent mask
+    blankMask->setZValue(3);
+    blankMask->setPos(offset, 0);
+    gameScene->addItem(blankMask);
+    gList.append(blankMask);
+
+    // show result text
+    QGraphicsTextItem * resultText;
+    if (side == 0 ){
+        resultText = new QGraphicsTextItem("Red lost");
+    } else {
+        resultText = new QGraphicsTextItem("Blue lost");
+    }
+    QFont resultFont("arial", 15);
+    resultText->setFont(resultFont);
+    resultText->setDefaultTextColor(Qt::red);
+    resultText->setPos(offset/2 - resultText->boundingRect().width()/2,
+                       height()/2 - resultText->boundingRect().height()/2);
+    gameScene->addItem(resultText);
+    gList.append(resultText);
+    // show restart button (not implemented)
+    Button *restart_bt = new Button("restart");
+    restart_bt->setPos(offset/2 - restart_bt->boundingRect().width()/2,
+                       resultText->y() + resultText->boundingRect().height() + restart_bt->boundingRect().height());
+    connect(restart_bt, SIGNAL(clicked()), this, SLOT(restart()));
+    gameScene->addItem(restart_bt);
+    gList.append(restart_bt);
+    qDebug() << "[game]"<< " [Game Over]" << side;
+}
+
+void Game::cleanGridPiece()
+{
+    // remove grid from the scene
+    for(int i = 0; i < 10; ++i) {
+        for (int j = 0; j < 9; ++j) {
+            this->gameScene->removeItem(this->game_grid[i][j]);
+            qDebug() << "[game]"<< " [Game Over]" << "[remove grid]" << i << j;
+        }
+    }
+
+    // remove pieces from the scene
+    qDebug() << "[game]"<< " [Game Over]" << "[remove piece]" << "red";
+    for(int i = 0, n = this->chess_main_board->redPieces.length(); i<n; i++) {
+        this->gameScene->removeItem(this->chess_main_board->redPieces[i]);
+        qDebug() << "[game]"<< " [Game Over]" << "[remove piece]" << i;
+    }
+    qDebug() << "[game]"<< " [Game Over]" << "[remove piece]" << "blue";
+    for(int i = 0, n = this->chess_main_board->bluePieces.length(); i<n; i++) {
+        this->gameScene->removeItem(this->chess_main_board->bluePieces[i]);
+        qDebug() << "[game]"<< " [Game Over]" << "[remove piece]" << i;
+    }
+    // clean pause button (not implemented)
+
+}
+
+
 void Game::initCCBoard()
 {
     chess_main_board = new CC_board();
@@ -129,31 +191,27 @@ void Game::keyPressEvent(QKeyEvent *event)
 
 void Game::start()
 {
-
-    qDebug() << "[back in game] start";
+    qDebug() << "[game] [start]";
     // refresh the scene, remove every thing from the scene for now
     cleanWindow();
     // initialize the chessboard, make new board and store them in game->chess_main_board;
     initCCBoard();
-
 }
 
 void Game::guide()
 {
     // would show a dedicated page for user guide
 
-    qDebug() << "[back in game] guide";
+    qDebug() << "[game] [guide]";
 }
 
 // pop after the quit button is pressed.
 void Game::areYouSure()
 {
     // pop a window
-    MyRect *areYouSure = new MyRect(150, 100);
+    MyRect *areYouSure = new MyRect(250, 120, 2);// opaque background
     // uper layer than the main window
     areYouSure->setZValue(2);
-    areYouSure->brush.setStyle(Qt::SolidPattern);
-    areYouSure->brush.setColor(Qt::white);
     areYouSure->setPos(width()/2 - areYouSure->boundingRect().width()/2,
                        height()/2 - areYouSure->boundingRect().height()/2);
 
@@ -190,11 +248,15 @@ void Game::notSure()
 
 void Game::restart()
 {
-    qDebug() << "[game] restart";
+    qDebug() << "[game] [restart]";
+    // clean grid and pieces
+    cleanGridPiece();
     // refresh the scene, remove every thing from the scene for now
     cleanWindow();
     // initialize the chessboard, make new board and store them in game->chess_main_board;
-    initCCBoard();
+    chess_main_board->resetBoard();
+    // set current side as 1, red first;
+    this->currentSide = 1;
 }
 
 void Game::close()
