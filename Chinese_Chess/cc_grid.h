@@ -22,9 +22,10 @@ public:
     void updateMyPiece(CC_piece * piece);
     void removeMyPiece();
 
+    bool hasPiece;
 private:
     QBrush brush;
-    bool hasPiece;
+    //bool hasPiece;
     int xPos;
     int yPos;
     CC_piece * myPiece;
