@@ -32,6 +32,8 @@ Game::Game(QWidget *parent): QGraphicsView(parent)
     bg_brush.setStyle(Qt::SolidPattern);
     bg_brush.setColor(Qt::white);
     setBackgroundBrush(bg_brush);
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(timer_function()));
 }
 
 void Game::showWelcomeMenu()
@@ -148,7 +150,7 @@ void Game::initCCBoard()
     chess_main_board = new CC_board();
     // set current side as 1, red first;
     this->currentSide = 1;
-
+    timer->start(1000);
 }
 
 void Game::cleanWindow()
@@ -264,3 +266,6 @@ void Game::close()
     QApplication::quit();
 }
 
+void Game::timer_function(){
+    seconds++;
+}

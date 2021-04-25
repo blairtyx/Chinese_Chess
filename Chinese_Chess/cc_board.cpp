@@ -10,6 +10,7 @@
 #include "cavery.h"
 #include "general.h"
 #include <QDebug>
+#include <QTimer>
 
 extern Game *game;
 CC_board::CC_board()

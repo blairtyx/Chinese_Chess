@@ -10,6 +10,8 @@
 #include "cc_board.h"
 #include "cc_piece.h"
 
+#include <QTime>
+
 class Game: public QGraphicsView
 {
     Q_OBJECT
@@ -47,6 +49,11 @@ public slots:
     void restart();
     void close();
 
+
+    void timer_function();
+private:
+    int seconds;
+    QTimer *timer;
 
 };
 

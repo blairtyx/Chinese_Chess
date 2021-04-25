@@ -4,6 +4,7 @@
 
 #include <QGraphicsPixmapItem>
 #include "cc_piece.h"
+#include <QTimer>
 
 class CC_board : public QGraphicsPixmapItem
 {
@@ -17,8 +18,6 @@ public:
 
     QList <CC_piece *> redPieces;
     QList <CC_piece *> bluePieces;
-
-
 };
 
 #endif // CC_BOARD_H
