@@ -162,6 +162,7 @@ void CC_grid::removeMyPiece()
 
 void CC_grid::resetMyPiece()
 {
+    this->myPiece = NULL;
     this->hasPiece = false;
     this->canMoveTo = false;
 }

@@ -151,8 +151,12 @@ void Game::cleanGridPiece()
 void Game::initCCBoard()
 {
     chess_main_board = new CC_board();
-    // set current side as 1, red first;
+    // set current side as 1, blue first;
     this->currentSide = 1;
+    // add pause button
+
+
+    // timer
     timer->start(1000);
 }
 
@@ -167,22 +171,7 @@ void Game::cleanWindow()
 
 }
 
-void Game::redrawCCBoard()
-{
-    // redraw the board after we select the piece
 
-    // add the grid back to scene
-    for (int i = 0; i<10 ; ++i){
-        for(int j= 0; j<10; ++j) {
-
-            this->gameScene->addItem(this->game_grid[i][j]); // add to scene to show the item
-            this->gList.append(this->game_grid[i][j]); // add to gList to keep item trackable
-
-        }
-    }
-
-    // add additional buttons (like pause and timer)
-}
 
 // can close the application with 'ESC' key
 void Game::keyPressEvent(QKeyEvent *event)

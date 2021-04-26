@@ -28,8 +28,6 @@ public:
 
     void cleanWindow(); // remove everything from the window
 
-    void redrawCCBoard(); // add the board back to the scene
-
     void keyPressEvent(QKeyEvent *event); // test method for key input
 
     QGraphicsScene * gameScene; // the main window to show items
