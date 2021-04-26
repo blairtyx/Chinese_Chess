@@ -38,6 +38,11 @@ int CC_piece::getMyYPosi()
     return this->yPos;
 }
 
+void CC_piece::reborn()
+{
+    this->alive = true;
+}
+
 void CC_piece::selected(int x, int y)
 {
     qDebug() << "[in CC_piece] selected";

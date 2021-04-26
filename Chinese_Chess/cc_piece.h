@@ -13,6 +13,7 @@ public:
     int getMyside();
     int getMyXPosi();
     int getMyYPosi();
+    void reborn();
     virtual void selected(int x, int y);
     void move(int x, int y);
     void deselected();

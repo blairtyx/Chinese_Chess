@@ -10,7 +10,6 @@ class CC_board : public QGraphicsPixmapItem
 {
 public:
     CC_board();
-    ~CC_board();
     void initialBlue();
     void initialRed();
     void initialBoard();
@@ -18,6 +17,7 @@ public:
 
     QList <CC_piece *> redPieces;
     QList <CC_piece *> bluePieces;
+    QGraphicsPixmapItem *myBackGround;
 };
 
 #endif // CC_BOARD_H

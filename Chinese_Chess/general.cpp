@@ -19,10 +19,10 @@ general::general(int side, QGraphicsItem *parent):CC_piece(side,parent)
 void general::setImage()
 {
     if (this->myside == 1) {
-        setPixmap(QPixmap(":/image/soldier_test_2.png").scaled(27,27));
+        setPixmap(QPixmap(":/image/general_blue_1.png").scaled(27,27));
     }
     else if (this->myside == 0) {
-        setPixmap(QPixmap(":/image/soldier_test.png").scaled(27,27));
+        setPixmap(QPixmap(":/image/general_red_1.png").scaled(27,27));
     }
 
 

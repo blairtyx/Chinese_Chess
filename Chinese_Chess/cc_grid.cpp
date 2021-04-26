@@ -8,9 +8,8 @@ CC_grid::CC_grid(QGraphicsItem *parent):QGraphicsRectItem(parent)
 {
     // create a rect
     setRect(0,0,27,27);
-    brush.setStyle(Qt::Dense1Pattern);
-    brush.setColor(Qt::lightGray);
-    setBrush(brush);
+    setBrush(Qt::NoBrush);
+    setPen(Qt::NoPen);
     // place it at layer -1
     //setZValue(-1);
     // set has piece as initial false
@@ -18,10 +17,7 @@ CC_grid::CC_grid(QGraphicsItem *parent):QGraphicsRectItem(parent)
     this->canMoveTo = false;
 }
 
-CC_grid::~CC_grid()
-{
-    delete this;
-}
+
 
 void CC_grid::CC_gridPosi(int xpos, int ypos)
 {
@@ -134,7 +130,7 @@ void CC_grid::highlightColor()
 {
     // set the color for this grid.
     this->brush.setColor(Qt::red);
-    this->brush.setStyle(Qt::SolidPattern);
+    this->brush.setStyle(Qt::Dense5Pattern);
     this->setBrush(this->brush);
     // add this grid to highlighted grid list
     game->highlightedGrid.append(this);
@@ -145,9 +141,8 @@ void CC_grid::highlightColor()
 
 void CC_grid::dehighlightColor()
 {
-    this->brush.setColor(Qt::lightGray);
-    this->brush.setStyle(Qt::Dense1Pattern);
-    this->setBrush(this->brush);
+
+    this->setBrush(Qt::NoBrush);
     this->canMoveTo = false;
 }
 
@@ -165,10 +160,13 @@ void CC_grid::removeMyPiece()
     this->hasPiece = false;
 }
 
-void CC_grid::deleteMypiece()
+void CC_grid::resetMyPiece()
 {
-    this->myPiece->~CC_piece();
+    this->hasPiece = false;
+    this->canMoveTo = false;
 }
+
+
 
 int CC_grid::checkFinish()
 {
@@ -203,6 +201,8 @@ int CC_grid::checkFinish()
     // not finished yet
     return 2;
 }
+
+
 
 
 

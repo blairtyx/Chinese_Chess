@@ -20,10 +20,6 @@ CC_board::CC_board()
     initialRed();
 }
 
-CC_board::~CC_board()
-{
-    delete this;
-}
 
 // top half of the board
 void CC_board::initialBlue()
@@ -236,6 +232,13 @@ void CC_board::initialBoard()
             game->gameScene->addItem(new_grid);
         }
     }
+    // set up the board picture
+
+    setPixmap(QPixmap(":/image/board.png").scaled(27 * 8 +2, 27*9 +2));
+    setPos(offset + 27/2, 27/2 - 1);
+    setZValue(-1);
+    game->gameScene->addItem(this);
+
     qDebug() << "[CC_board] finish initialBoard()";
 }
 
@@ -243,8 +246,194 @@ void CC_board::resetBoard()
 {
     qDebug() << "[cc_board] clean board";
     // put gird back, reset to origin value
+    for (int i = 0; i< 10; ++i) {
+        for (int j = 0; j<9; ++j) {
+            game->game_grid[i][j]->resetMyPiece();
+            game->gameScene->addItem(game->game_grid[i][j]);
+        }
+    }
 
     // put pieces back, reset to origin value
+    CC_piece * newPiece;
 
+    // blue general
+    newPiece = bluePieces[0];
+    newPiece->move(0,4);
+    game->game_grid[0][4]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
 
+    // blue guard
+    newPiece = bluePieces[1];
+    newPiece->move(0,3);
+    game->game_grid[0][3]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    newPiece = bluePieces[2];
+    newPiece->move(0,5);
+    game->game_grid[0][5]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    // blue elephant
+    newPiece = bluePieces[3];
+    newPiece->move(0,2);
+    game->game_grid[0][2]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    newPiece = bluePieces[4];
+    newPiece->move(0,6);
+    game->game_grid[0][6]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    // 5 soldier
+    newPiece = bluePieces[5];
+    newPiece->move(3,0);
+    game->game_grid[3][0]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    newPiece = bluePieces[6];
+    newPiece->move(3,2);
+    game->game_grid[3][2]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    newPiece = bluePieces[7];
+    newPiece->move(3,4);
+    game->game_grid[3][4]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    newPiece = bluePieces[8];
+    newPiece->move(3,6);
+    game->game_grid[3][6]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    newPiece = bluePieces[9];
+    newPiece->move(3,8);
+    game->game_grid[3][8]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    // blue battery
+    newPiece = bluePieces[10];
+    newPiece->move(2,1);
+    game->game_grid[2][1]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    newPiece = bluePieces[11];
+    newPiece->move(2,7);
+    game->game_grid[2][7]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    // blue chariot
+    newPiece = bluePieces[12];
+    newPiece->move(0,0);
+    game->game_grid[0][0]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    newPiece = bluePieces[13];
+    newPiece->move(0,8);
+    game->game_grid[0][8]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    // blue cavery
+    newPiece = bluePieces[14];
+    newPiece->move(0,1);
+    game->game_grid[0][1]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    newPiece = bluePieces[15];
+    newPiece->move(0,7);
+    game->game_grid[0][7]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    // red general
+    newPiece = redPieces[0];
+    newPiece->move(9,4);
+    game->game_grid[9][4]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    // red guard
+    newPiece = redPieces[1];
+    newPiece->move(9,3);
+    game->game_grid[9][3]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    newPiece = redPieces[2];
+    newPiece->move(9,5);
+    game->game_grid[9][5]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    // red elephant
+    newPiece = redPieces[3];
+    newPiece->move(9,2);
+    game->game_grid[9][2]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    newPiece = redPieces[4];
+    newPiece->move(9,6);
+    game->game_grid[9][6]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    // red soldier
+    newPiece = redPieces[5];
+    newPiece->move(6,0);
+    game->game_grid[6][0]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    newPiece = redPieces[6];
+    newPiece->move(6,2);
+    game->game_grid[6][2]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    newPiece = redPieces[7];
+    newPiece->move(6,4);
+    game->game_grid[6][4]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    newPiece = redPieces[8];
+    newPiece->move(6,6);
+    game->game_grid[6][6]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    newPiece = redPieces[9];
+    newPiece->move(6,8);
+    game->game_grid[6][8]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    // red battery
+    newPiece = redPieces[10];
+    newPiece->move(7,1);
+    game->game_grid[7][1]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    newPiece = redPieces[11];
+    newPiece->move(7,7);
+    game->game_grid[7][7]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    // red chariot
+    newPiece = redPieces[12];
+    newPiece->move(9,0);
+    game->game_grid[9][0]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    newPiece = redPieces[13];
+    newPiece->move(9,8);
+    game->game_grid[9][8]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    // two cavery
+    newPiece = redPieces[14];
+    newPiece->move(9,1);
+    game->game_grid[9][1]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    newPiece = redPieces[15];
+    newPiece->move(9,7);
+    game->game_grid[9][7]->updateMyPiece(newPiece);
+    game->gameScene->addItem(newPiece);
+
+    for (int i = 0; i < redPieces.length(); i++) {
+        redPieces[i]->reborn();
+    }
+    for (int j = 0; j < bluePieces.length(); j++) {
+        bluePieces[j]->reborn();
+    }
 }

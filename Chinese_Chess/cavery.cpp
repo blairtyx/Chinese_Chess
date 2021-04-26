@@ -19,10 +19,10 @@ cavery::cavery(int side, QGraphicsItem *parent):CC_piece(side,parent)
 void cavery::setImage()
 {
     if (this->myside == 1) {
-        setPixmap(QPixmap(":/image/soldier_test_2.png").scaled(27,27));
+        setPixmap(QPixmap(":/image/horse_blue_1.png").scaled(27,27));
     }
     else if (this->myside == 0) {
-        setPixmap(QPixmap(":/image/soldier_test.png").scaled(27,27));
+        setPixmap(QPixmap(":/image/horse_red_1.png").scaled(27,27));
     }
 
 

@@ -92,6 +92,7 @@ void Game::showGameOverWindow(int side)
     MyRect *blankMask = new MyRect(243, 272, 1);// transparent mask
     blankMask->setZValue(3);
     blankMask->setPos(offset, 0);
+    blankMask->setPen(Qt::NoPen);
     gameScene->addItem(blankMask);
     gList.append(blankMask);
 
@@ -141,6 +142,8 @@ void Game::cleanGridPiece()
         qDebug() << "[game]"<< " [Game Over]" << "[remove piece]" << i;
     }
     // clean pause button (not implemented)
+
+
 
 }
 
