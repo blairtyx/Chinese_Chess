@@ -21,3 +21,8 @@ void start_window::on_startButton_clicked()
     w.resize(480,272);
     w.show();
 }
+
+void start_window::on_endButton_clicked()
+{
+    close();
+}

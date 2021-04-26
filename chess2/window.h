@@ -17,6 +17,7 @@
 #include <QtMath>
 #include <QDebug>
 #include <QString>
+#include <QPixmap>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class window; }
@@ -32,11 +33,14 @@ public:
     void reset();
 public slots:
     void mychess_move();
+    void count_timer();
 protected:
     void mousePressEvent(QMouseEvent *event) override;
     void paintEvent(QPaintEvent *event) override;
 private slots:
     void on_flipButton_clicked();
+
+    void on_pauseButton_clicked();
 
 private:
     QImage image;
@@ -53,12 +57,13 @@ private:
     //chess
     int chessboard[9][10] = {{0}};
     int moveboard[9][10] = {{0}};
-    QString chess_name[20];
+    QPixmap chess_name[20];
     bool side;
     bool selected;
     int board_image;
 
     QTimer *timer;
+    QTimer *pause_timer;
     int chosen;
     int chosenx;
     int choseny;
@@ -78,5 +83,6 @@ private:
     void guard();
     void general();
     int win;
+    int seconds;
 };
 #endif // WINDOW_H

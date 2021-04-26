@@ -18,6 +18,8 @@ public:
     QList <CC_piece *> redPieces;
     QList <CC_piece *> bluePieces;
     QGraphicsPixmapItem *myBackGround;
+    QTimer *timer;
+    bool animated;
 };
 
 #endif // CC_BOARD_H

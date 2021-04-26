@@ -11,6 +11,7 @@
 #include <QBrush>
 #include <QDebug>
 #include <QApplication>
+#include <QTimer>
 
 Game::Game(QWidget *parent): QGraphicsView(parent)
 {
@@ -259,5 +260,18 @@ void Game::close()
 }
 
 void Game::timer_function(){
-    seconds++;
+    if ((desty-curr_y)*(desty-curr_y)+(destx-curr_x)*(destx-curr_x) < 225) {
+        chessboard[destx_slot][desty_slot] = chosen;
+        chosen = 0;
+        selected = false;
+        side = !side;
+        timer->stop();
+    } else {
+        int a = qSqrt((desty-curr_y)*(desty-curr_y)+(destx-curr_x)*(destx-curr_x));
+        curr_x += 20*(destx-curr_x)/a;
+        curr_y += 20*(desty-curr_y)/a;
+        timer->start(20);
+    }
+    update();
+    return;
 }

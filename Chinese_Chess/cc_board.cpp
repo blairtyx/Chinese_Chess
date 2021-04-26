@@ -217,6 +217,8 @@ void CC_board::initialBoard()
 {
     // get the offset of the grid
     int offset = game->width()/2 - 27/2 - 27*4;
+    animated = false;
+    game->gif_grid = new CC_grid();
 
     // set up the board with 10row 9col grids.
     for(int i = 0; i < 10; ++i) {
@@ -244,6 +246,7 @@ void CC_board::initialBoard()
 
 void CC_board::resetBoard()
 {
+    animated = false;
     qDebug() << "[cc_board] clean board";
     // put gird back, reset to origin value
     for (int i = 0; i< 10; ++i) {

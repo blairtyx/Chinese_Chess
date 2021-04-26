@@ -2,28 +2,33 @@
 <ui version="4.0">
  <class>start_window</class>
  <widget class="QWidget" name="start_window">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>400</width>
-    <height>300</height>
-   </rect>
-  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <widget class="QPushButton" name="startButton">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>40</y>
+     <x>60</x>
+     <y>170</y>
      <width>112</width>
      <height>32</height>
     </rect>
    </property>
    <property name="text">
     <string>Start</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="endButton">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>170</y>
+     <width>112</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Quit</string>
    </property>
   </widget>
  </widget>

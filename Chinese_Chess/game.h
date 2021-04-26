@@ -10,7 +10,7 @@
 #include "cc_board.h"
 #include "cc_piece.h"
 
-#include <QTime>
+#include <QTimer>
 
 class Game: public QGraphicsView
 {
@@ -36,9 +36,14 @@ public:
     CC_grid * game_grid[10][9]; //
     CC_piece * selectedPiece = NULL;
     QList <CC_grid *> highlightedGrid; // all highlighted grid
-
+    CC_grid * gif_grid;
     int currentSide;
-
+    QTimer *timer;
+    int destx;
+    int desty;
+    int curr_x;
+    int curr_y;
+    bool selected;
 public slots:
     void areYouSure();
     void start();
@@ -51,7 +56,6 @@ public slots:
     void timer_function();
 private:
     int seconds;
-    QTimer *timer;
 
 };
 
