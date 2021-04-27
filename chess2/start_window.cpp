@@ -18,6 +18,7 @@ start_window::~start_window()
 
 void start_window::on_startButton_clicked()
 {
+    w.reset();
     w.resize(480,272);
     w.show();
 }

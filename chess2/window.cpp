@@ -28,21 +28,7 @@ window::window(QWidget *parent)
     connect(pause_timer, SIGNAL(timeout()), this, SLOT(count_timer()));
     pause_timer->start(1000);
     ui->setupUi(this);
-    /*
-    chess_name[1] = "兵";
-    chess_name[2] = "炮";
-    chess_name[3] = "车";
-    chess_name[4] = "马";
-    chess_name[5] = "相";
-    chess_name[6] = "仕";
-    chess_name[7] = "帅";
-    chess_name[9] = "卒";
-    chess_name[10] = "砲";
-    chess_name[11] = "車";
-    chess_name[12] = "馬";
-    chess_name[13] = "象";
-    chess_name[14] = "士";
-    chess_name[15] = "将";*/
+
     chess_name[1] = QPixmap(":/image/soldier_red_1.png").scaled(unit,unit);
     chess_name[2] = QPixmap(":/image/cannon_red_1.png").scaled(unit,unit);
     chess_name[3] = QPixmap(":/image/chariot_red_1.png").scaled(unit,unit);
@@ -100,7 +86,6 @@ window::~window()
 
 void window::mousePressEvent(QMouseEvent *event) {
     if (win) {
-        reset();
         close();
     }
     if (selected) {
@@ -193,9 +178,9 @@ void window::paintEvent(QPaintEvent *event) {
         } else {
             painter.setPen(QPen(Qt::red,1,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
         }
-        painter.drawText(20,40,QString::number(seconds));
-        ui->flipButton->setEnabled(true);
-        ui->pauseButton->setEnabled(true);
+        painter.drawText(20,55,QString::number(seconds));
+        ui->flipButton->setVisible(true);
+        ui->pauseButton->setVisible(true);
         painter.setPen(QPen(Qt::white,1,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
         painter.setBrush(QBrush(Qt::yellow,Qt::Dense5Pattern));
         for (int i = 0;i<9;i++) {
@@ -222,36 +207,17 @@ void window::paintEvent(QPaintEvent *event) {
         for (int i = 0;i<9;i++) {
             for (int j = 0;j<10;j++) {
                 if (chessboard[i][j] >0) {
-                    /*
-                    if (chessboard[i][j] <8) {
-                        painter.setBrush(QBrush(Qt::red,Qt::SolidPattern));
-                        painter.setPen(QPen(Qt::black,1,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
-                    } else {
-                        painter.setBrush(QBrush(Qt::blue,Qt::SolidPattern));
-                        painter.setPen(QPen(Qt::white,1,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
-                    }
-                    painter.drawEllipse(xstart+i*unit-unit/2,ystart+j*unit-unit/2,unit,unit);
-                    painter.drawText(xstart+i*unit-6,ystart+j*unit+6,chess_name[chessboard[i][j]]);*/
+
                     painter.drawPixmap(xstart+i*unit-unit/2,ystart+j*unit-unit/2,unit,unit,chess_name[chessboard[i][j]]);
                 }
             }
         }
         if (selected) {
-            /*
-            if (chosen <8) {
-                painter.setBrush(QBrush(Qt::red,Qt::SolidPattern));
-                painter.setPen(QPen(Qt::black,1,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
-            } else {
-                painter.setBrush(QBrush(Qt::blue,Qt::SolidPattern));
-                painter.setPen(QPen(Qt::white,1,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
-            }
-            painter.drawEllipse(curr_x-unit/2,curr_y-unit/2,unit,unit);
-            painter.drawText(curr_x-6,curr_y+6,"棋");*/
             painter.drawPixmap(curr_x-unit/2,curr_y-unit/2,unit,unit,chess_name[chosen]);
         }
     } else if(board_image == 2) {
-        ui->flipButton->setDisabled(true);
-        ui->pauseButton->setDisabled(true);
+        ui->flipButton->setVisible(false);
+        ui->pauseButton->setVisible(false);
         painter.setPen(QPen(Qt::white,1,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
         painter.setBrush(QBrush(Qt::yellow,Qt::Dense5Pattern));
         for (int i = 0;i<9;i++) {
@@ -275,23 +241,14 @@ void window::paintEvent(QPaintEvent *event) {
         for (int i = 0;i<9;i++) {
             for (int j = 0;j<5;j++) {
                 if (chessboard[i][j+5] >0) {
-                    /*
-                    if (chessboard[i][j+5]<8) {
-                        painter.setBrush(QBrush(Qt::red,Qt::SolidPattern));
-                        painter.setPen(QPen(Qt::black,1,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
-                    } else {
-                        painter.setBrush(QBrush(Qt::blue,Qt::SolidPattern));
-                        painter.setPen(QPen(Qt::white,1,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
-                    }
-                    painter.drawEllipse(x_zoom+i*u_zoom-u_zoom/2,y_zoom+j*u_zoom-u_zoom/2,u_zoom,u_zoom);
-                    painter.drawText(x_zoom+i*u_zoom-6,y_zoom+j*u_zoom+6,chess_name[chessboard[i][j+5]]);*/
+
                     painter.drawPixmap(x_zoom+i*u_zoom-u_zoom/2,y_zoom+j*u_zoom-u_zoom/2,u_zoom,u_zoom,chess_name[chessboard[i][j+5]]);
                 }
             }
         }
     } else {
-        ui->flipButton->setDisabled(true);
-        ui->pauseButton->setDisabled(true);
+        ui->flipButton->setVisible(false);
+        ui->pauseButton->setVisible(false);
         painter.setPen(QPen(Qt::white,1,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
         painter.setBrush(QBrush(Qt::yellow,Qt::Dense5Pattern));
         for (int i = 0;i<9;i++) {
@@ -316,16 +273,7 @@ void window::paintEvent(QPaintEvent *event) {
         for (int i = 0;i<9;i++) {
             for (int j = 0;j<5;j++) {
                 if (chessboard[i][j] >0) {
-                    /*
-                    if (chessboard[i][j] <8) {
-                        painter.setBrush(QBrush(Qt::red,Qt::SolidPattern));
-                        painter.setPen(QPen(Qt::black,1,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
-                    } else {
-                        painter.setBrush(QBrush(Qt::blue,Qt::SolidPattern));
-                        painter.setPen(QPen(Qt::white,1,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
-                    }
-                    painter.drawEllipse(x_zoom+i*u_zoom-u_zoom/2,y_zoom+j*u_zoom-u_zoom/2,u_zoom,u_zoom);
-                    painter.drawText(x_zoom+i*u_zoom-6,y_zoom+j*u_zoom+6,chess_name[chessboard[i][j]]);*/
+
                     painter.drawPixmap(x_zoom+i*u_zoom-u_zoom/2,y_zoom+j*u_zoom-u_zoom/2,u_zoom,u_zoom,chess_name[chessboard[i][j]]);
                 }
             }
@@ -337,12 +285,12 @@ void window::paintEvent(QPaintEvent *event) {
         painter.drawRect(140,50,200,150);
         if (side) {
             painter.setPen(QPen(Qt::red,10,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
-            painter.drawText(215,130,"red wins!");
+            painter.drawText(200,130,"red wins!");
         } else {
             painter.setPen(QPen(Qt::blue,10,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
-            painter.drawText(215,130,"blue wins!");
+            painter.drawText(200,130,"blue wins!");
         }
-        painter.drawText(210,170,"Click to exit");
+        painter.drawText(190,170,"Click to exit");
     }
 
 }
@@ -677,21 +625,7 @@ void window::reset() {
     seconds = 0;
     win = false;
     pause_timer->start();
-    /*
-    chess_name[1] = "兵";
-    chess_name[2] = "炮";
-    chess_name[3] = "车";
-    chess_name[4] = "马";
-    chess_name[5] = "相";
-    chess_name[6] = "仕";
-    chess_name[7] = "帅";
-    chess_name[9] = "卒";
-    chess_name[10] = "砲";
-    chess_name[11] = "車";
-    chess_name[12] = "馬";
-    chess_name[13] = "象";
-    chess_name[14] = "士";
-    chess_name[15] = "将";*/
+
     chess_name[1] = QPixmap(":/image/soldier_red_1.png").scaled(unit,unit);
     chess_name[2] = QPixmap(":/image/cannon_red_1.png").scaled(unit,unit);
     chess_name[3] = QPixmap(":/image/chariot_red_1.png").scaled(unit,unit);
