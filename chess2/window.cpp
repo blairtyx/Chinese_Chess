@@ -196,7 +196,8 @@ void window::paintEvent(QPaintEvent *event) {
         painter.drawText(20,40,QString::number(seconds));
         ui->flipButton->setEnabled(true);
         ui->pauseButton->setEnabled(true);
-        painter.setBrush(QBrush(Qt::yellow,Qt::SolidPattern));
+        painter.setPen(QPen(Qt::white,1,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
+        painter.setBrush(QBrush(Qt::yellow,Qt::Dense5Pattern));
         for (int i = 0;i<9;i++) {
             for (int j = 0;j<10;j++) {
                 if (moveboard[i][j] == 1) {
@@ -251,7 +252,8 @@ void window::paintEvent(QPaintEvent *event) {
     } else if(board_image == 2) {
         ui->flipButton->setDisabled(true);
         ui->pauseButton->setDisabled(true);
-        painter.setBrush(QBrush(Qt::yellow,Qt::SolidPattern));
+        painter.setPen(QPen(Qt::white,1,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
+        painter.setBrush(QBrush(Qt::yellow,Qt::Dense5Pattern));
         for (int i = 0;i<9;i++) {
             for (int j = 0;j<5;j++) {
                 if (moveboard[i][j+5] == 1) {
@@ -290,7 +292,8 @@ void window::paintEvent(QPaintEvent *event) {
     } else {
         ui->flipButton->setDisabled(true);
         ui->pauseButton->setDisabled(true);
-        painter.setBrush(QBrush(Qt::yellow,Qt::SolidPattern));
+        painter.setPen(QPen(Qt::white,1,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
+        painter.setBrush(QBrush(Qt::yellow,Qt::Dense5Pattern));
         for (int i = 0;i<9;i++) {
             for (int j = 0;j<5;j++) {
                 if (moveboard[i][j] == 1) {
@@ -331,14 +334,15 @@ void window::paintEvent(QPaintEvent *event) {
     if (win) {
         selected = true;
         painter.setBrush(QBrush(Qt::white,Qt::SolidPattern));
-        painter.drawRect(0,0,480,272);
+        painter.drawRect(140,50,200,150);
         if (side) {
-            painter.setPen(QPen(Qt::red,3,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
+            painter.setPen(QPen(Qt::red,10,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
             painter.drawText(215,130,"red wins!");
         } else {
-            painter.setPen(QPen(Qt::blue,3,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
+            painter.setPen(QPen(Qt::blue,10,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
             painter.drawText(215,130,"blue wins!");
         }
+        painter.drawText(210,170,"Click to exit");
     }
 
 }
@@ -672,11 +676,7 @@ void window::reset() {
     chosen = 0;
     seconds = 0;
     win = false;
-    timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(mychess_move()));
-    pause_timer = new QTimer(this);
-    connect(pause_timer, SIGNAL(timeout()), this, SLOT(count_timer()));
-    pause_timer->start(10000);
+    pause_timer->start();
     /*
     chess_name[1] = "兵";
     chess_name[2] = "炮";

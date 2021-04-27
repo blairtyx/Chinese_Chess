@@ -42,6 +42,7 @@ private slots:
 
     void on_pauseButton_clicked();
 
+
 private:
     QImage image;
     QPen pen;
