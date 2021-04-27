@@ -466,6 +466,7 @@ void window::chariot() {
 void window::cavery() {
     int x = chosenx;
     int y = choseny;
+    moveboard[x][y]=1;
     if (x>1&&chessboard[x-1][y] == 0) {
         if (y>0) {
             moveboard[x-2][y-1]=1;
@@ -506,6 +507,7 @@ void window::cavery() {
 void window::elephant() {
     int x = chosenx;
     int y = choseny;
+    moveboard[x][y]=1;
     if (side) {
         if (x>1&&y>1&&chessboard[x-1][y-1]== 0) {
             moveboard[x-2][y-2] = 1;
@@ -542,6 +544,7 @@ void window::elephant() {
 void window::guard() {
     int x = chosenx;
     int y = choseny;
+    moveboard[x][y]=1;
     if (side) {
         if (x>3&&y>0) {
             moveboard[x-1][y-1]=1;
@@ -577,6 +580,7 @@ void window::guard() {
 void window::general() {
     int x = chosenx;
     int y = choseny;
+    moveboard[x][y]=1;
     if (x>3) {
         moveboard[x-1][y]=1;
     }
