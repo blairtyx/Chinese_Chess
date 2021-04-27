@@ -16,10 +16,10 @@ chariot::chariot(int side, QGraphicsItem *parent):CC_piece(side,parent)
 void chariot::setImage()
 {
     if (this->myside == 1) {
-        setPixmap(QPixmap(":/image/chariot_blue_1.png").scaled(27,27));
+        setPixmap(QPixmap(":/image/chariot_red_1.png").scaled(27,27));
     }
     else if (this->myside == 0) {
-        setPixmap(QPixmap(":/image/chariot_red_1.png").scaled(27,27));
+        setPixmap(QPixmap(":/image/chariot_blue_1.png").scaled(27,27));
     }
 
 }

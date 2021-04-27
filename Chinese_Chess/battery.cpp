@@ -16,10 +16,10 @@ battery::battery(int side, QGraphicsItem *parent):CC_piece(side,parent)
 void battery::setImage()
 {
     if (this->myside == 1) {
-        setPixmap(QPixmap(":/image/cannon_blue_1.png").scaled(27,27));
+        setPixmap(QPixmap(":/image/cannon_red_1.png").scaled(27,27));
     }
     else if (this->myside == 0) {
-        setPixmap(QPixmap(":/image/cannon_red_1.png").scaled(27,27));
+        setPixmap(QPixmap(":/image/cannon_blue_1.png").scaled(27,27));
     }
 }
 

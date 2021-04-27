@@ -152,7 +152,7 @@ void Game::cleanGridPiece()
 void Game::initCCBoard()
 {
     chess_main_board = new CC_board();
-    // set current side as 1, blue first;
+    // set current side as 1, red first;
     this->currentSide = 1;
     // add pause button
 
