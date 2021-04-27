@@ -9,40 +9,17 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    battery.cpp \
-    button.cpp \
-    cavery.cpp \
-    cc_board.cpp \
-    cc_grid.cpp \
-    cc_piece.cpp \
-    chariot.cpp \
-    elephant.cpp \
-    game.cpp \
-    general.cpp \
-    guard.cpp \
     main.cpp \
-    myrect.cpp \
-    soldier.cpp
+    start_window.cpp \
+    window.cpp
 
 HEADERS += \
-    battery.h \
-    button.h \
-    cavery.h \
-    cc_board.h \
-    cc_grid.h \
-    cc_piece.h \
-    chariot.h \
-    elephant.h \
-    game.h \
-    general.h \
-    guard.h \
-    myrect.h \
-    soldier.h
+    start_window.h \
+    window.h
 
-FORMS +=
-
-TRANSLATIONS += \
-    Chinese_Chess_en_US.ts
+FORMS += \
+    start_window.ui \
+    window.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -50,4 +27,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    res.qrc
+    resource.qrc

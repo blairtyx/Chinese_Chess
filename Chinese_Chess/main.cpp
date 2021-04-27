@@ -1,11 +1,12 @@
-#include "chinese_chess.h"
-
+#include "game.h"
 #include <QApplication>
 
+Game *game;
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    chinese_chess w;
-    w.show();
+    game = new Game();
+    game->show();
+    game->showWelcomeMenu();
     return a.exec();
 }

@@ -1,0 +1,35 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>soldier_test.png</file>
+        <file>soldier_test_2.png</file>
+        <file>general_blue_2.png</file>
+        <file>general_blue_1.png</file>
+        <file>general_red_2.png</file>
+        <file>general_red_1.png</file>
+        <file>elephant_blue_2.png</file>
+        <file>elephant_blue_1.png</file>
+        <file>elephant_red_2.png</file>
+        <file>elephant_red_1.png</file>
+        <file>cannon_blue_2.png</file>
+        <file>cannon_blue_1.png</file>
+        <file>cannon_red_2.png</file>
+        <file>cannon_red_1.png</file>
+        <file>horse_blue_2.png</file>
+        <file>horse_blue_1.png</file>
+        <file>horse_red_2.png</file>
+        <file>horse_red_1.png</file>
+        <file>soldier_blue_2.png</file>
+        <file>soldier_blue_1.png</file>
+        <file>soldier_red_2.png</file>
+        <file>soldier_red_1.png</file>
+        <file>chariot_blue_2.png</file>
+        <file>chariot_blue_1.png</file>
+        <file>chariot_red_1.png</file>
+        <file>chariot_red_2.png</file>
+        <file>advisor_blue_2.png</file>
+        <file>advisor_blue_1.png</file>
+        <file>advisor_red_2.png</file>
+        <file>advisor_red_1.png</file>
+        <file>board.png</file>
+    </qresource>
+</RCC>
