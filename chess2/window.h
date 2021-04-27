@@ -44,8 +44,6 @@ private slots:
 
 
 private:
-    QImage image;
-    QPen pen;
     //general board
     const int unit = 24;
     const int xstart = 144;
