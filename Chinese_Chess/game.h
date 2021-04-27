@@ -44,6 +44,8 @@ public:
     int curr_x;
     int curr_y;
     bool selected;
+    int seconds;
+    QGraphicsTextItem *timeText;
 public slots:
     void areYouSure();
     void start();
@@ -51,11 +53,10 @@ public slots:
     void notSure();
     void restart();
     void close();
-
+    void timer_pause();
 
     void timer_function();
 private:
-    int seconds;
 
 };
 

@@ -191,6 +191,20 @@ void Game::start()
     cleanWindow();
     // initialize the chessboard, make new board and store them in game->chess_main_board;
     initCCBoard();
+    int offset = width()/2 - 27/2 - 27*4;
+    QGraphicsTextItem * resultText = new QGraphicsTextItem("pause");
+    Button *pause_bt = new Button("pause");
+    pause_bt->setPos(offset/2 - pause_bt->boundingRect().width()/2,
+                           resultText->y() + resultText->boundingRect().height() + pause_bt->boundingRect().height());
+    connect(pause_bt, SIGNAL(clicked()), this, SLOT(timer_pause()));
+    gameScene->addItem(pause_bt);
+    gList.append(pause_bt);
+    seconds = 0;
+    selected = false;
+    timeText = new QGraphicsTextItem(QString::number(seconds));
+    timeText->setPos(20,40);
+    gameScene->addItem(timeText);
+    gList.append(timeText);
 }
 
 void Game::guide()
@@ -260,5 +274,22 @@ void Game::close()
 }
 
 void Game::timer_function(){
+    seconds++;
+    gameScene->removeItem(timeText);
+    timeText = new QGraphicsTextItem(QString::number(seconds));
+    timeText->setPos(20,40);
+    gameScene->addItem(timeText);
+    gList.append(timeText);
+    return;
+}
+
+void Game::timer_pause(){
+    if (selected) {
+        timer->start();
+        selected = false;
+    } else {
+        timer->stop();
+        selected = true;
+    }
     return;
 }

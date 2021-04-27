@@ -28,6 +28,9 @@ void CC_grid::CC_gridPosi(int xpos, int ypos)
 
 void CC_grid::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
+    if (game->selected) {
+        return;
+    }
     // selected this gird
     if (event){
 
@@ -59,6 +62,7 @@ void CC_grid::mousePressEvent(QGraphicsSceneMouseEvent *event)
             }
             // if selecting a highlighted grid
             else if(this->canMoveTo && this->myPiece != game->selectedPiece) {
+                game->seconds = 0;
                 qDebug() << "[cc_grid]" << " [selected 2nd]"<< "selecting a highlighted grid";
                 qDebug() << "[cc_grid]" << " [selected 2nd]"<< "canMoveTo " << this->canMoveTo;
                 // check if this grid's piece belongs to the other side

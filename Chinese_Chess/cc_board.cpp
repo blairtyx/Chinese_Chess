@@ -18,6 +18,7 @@ CC_board::CC_board()
     initialBoard();
     initialBlue();
     initialRed();
+    game->timer->start(1000);
 }
 
 
@@ -208,6 +209,7 @@ void CC_board::initialRed()
         // add this piece to red side list
         this->redPieces.append(newPiece);
 
+
     qDebug() << "[CC_board] red count: " << this->redPieces.length();
     qDebug() << "[CC_board] finish initialRed()";
 
@@ -217,7 +219,7 @@ void CC_board::initialBoard()
 {
     // get the offset of the grid
     int offset = game->width()/2 - 27/2 - 27*4;
-    animated = false;
+    game->selected = false;
     game->gif_grid = new CC_grid();
 
     // set up the board with 10row 9col grids.
