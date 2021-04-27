@@ -26,3 +26,4 @@ void start_window::on_endButton_clicked()
 {
     close();
 }
+
