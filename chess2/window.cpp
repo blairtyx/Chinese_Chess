@@ -94,6 +94,7 @@ void window::mousePressEvent(QMouseEvent *event) {
     int x = event->x();
     int y = event->y();
     if (board_image == 0) {
+        //zoom in
         if (y<131) {
             board_image = 1;
         } else {
@@ -101,6 +102,7 @@ void window::mousePressEvent(QMouseEvent *event) {
         }
     } else {
         if (x<x_zoom-unit/2||x>480-x_zoom+unit/2) {
+            //zoom out
             board_image = 0;
         } else if (y<y_zoom-unit/2||y>272-y_zoom+unit/2){
             return;
@@ -116,6 +118,7 @@ void window::mousePressEvent(QMouseEvent *event) {
                         moveboard[i][j] = 0;
                     }
                 }
+                //select chess
                 chosen = chessboard[x][y];
                 curr_x = xstart+x*unit;
                 curr_y = ystart +y*unit;
@@ -127,6 +130,7 @@ void window::mousePressEvent(QMouseEvent *event) {
                 } else {
                     type = chessboard[x][y];
                 }
+                //find movable slots
                 if (type == 1) {
                     infantry();
                 } else if (type == 2) {
@@ -146,6 +150,7 @@ void window::mousePressEvent(QMouseEvent *event) {
                     return;
                 }
             } else if (chosen>0) {
+                //start moving
                 if (moveboard[x][y] == 1) {
                     destx_slot = x;
                     desty_slot = y;
@@ -171,7 +176,6 @@ void window::mousePressEvent(QMouseEvent *event) {
 void window::paintEvent(QPaintEvent *event) {
     QPainter painter(this);
     QRect rec = event->rect();
-    //painter.drawImage(rec,image,rec);
     if (board_image == 0) {
         if (side) {
             painter.setPen(QPen(Qt::blue,1,Qt::SolidLine,Qt::RoundCap,Qt::RoundJoin));
@@ -279,6 +283,7 @@ void window::paintEvent(QPaintEvent *event) {
             }
         }
     }
+    //display winning message
     if (win) {
         selected = true;
         painter.setBrush(QBrush(Qt::white,Qt::SolidPattern));
@@ -297,6 +302,7 @@ void window::paintEvent(QPaintEvent *event) {
 
 void window::mychess_move() {
     if ((desty-curr_y)*(desty-curr_y)+(destx-curr_x)*(destx-curr_x) < 225) {
+        //reach destination
         if (chessboard[destx_slot][desty_slot] == 7||chessboard[destx_slot][desty_slot] == 15) {
             win = 1;
         }
@@ -307,6 +313,7 @@ void window::mychess_move() {
         seconds = 0;
         timer->stop();
     } else {
+        //move
         int a = qSqrt((desty-curr_y)*(desty-curr_y)+(destx-curr_x)*(destx-curr_x));
         curr_x += 20*(destx-curr_x)/a;
         curr_y += 20*(desty-curr_y)/a;
